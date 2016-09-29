@@ -40,7 +40,7 @@ class UserGame(ndb.Model):
         """Returns user's game infromation"""
         form = UserGameForm()
         form.user_name = self.user.get().name
-        form.game_key = self.game_key.integer_id()
+        form.game_key = self.game_key.urlsafe()
         form.game_over = self.game_over
         form.win_status = self.win_status
         moves_count = self.moves_count
@@ -165,7 +165,7 @@ class MakeMoveForm(messages.Message):
 class UserGameForm(messages.Message):
     """User to provide information about user's games"""
     user_name = messages.StringField(1, required=True)
-    game_key = messages.IntegerField(2, required=True)
+    game_key = messages.StringField(2, required=True)
     game_over = messages.BooleanField(3, required=True)
     win_status = messages.StringField(4)
     moves_count = messages.IntegerField(5)

@@ -7,11 +7,9 @@ Olivia Salonga (R) Version 1.0 09/26/2016
 3.  From the command line using CMD, run the sciprt below.
     <file path where google_appengine resides>/dev_appserver.py --smtp_host=smtp.gmail.com --smtp_port=25 --smtp_user=<gmail account> --smtp_password=<gmail password> --skip_sdk_update_check=yes --port=<port from step 2> --admin_port=<admin port from step 2> <file path where the project resides>
 file path where google_appengine resides:  Example - "c:\Program Files (x86)\Google\google_appengine"
-4. Go to http://localhost:<port from step 2>/_ah/api/explorer (example: http://localhost:8080/_ah/api/explorer ).  Reminder to allow the site to load unsecure scripts.   
-5.  Go to http://localhost:<admin port from step 2>/console (example: http://localhost:8000/console) and select Cron to run the Cron job to send emails.  Reminder - The email account used in step 2 must be configured to allow access for less secure apps.  To configure this,  log in to your email account, then, go to https://www.google.com/settings/security/lesssecureapps.
-
-
-
+4.  Laund the API Explorer site using "<path-to-Chrome> --user-data-dir=test --unsafely-treat-insecure-origin-as-secure=http://localhost:<port from step 2>"
+5. Go to http://localhost:<port from step 2>/_ah/api/explorer (example: http://localhost:8080/_ah/api/explorer ).  Reminder to allow the site to load unsecure scripts.   
+6.  Go to http://localhost:<admin port from step 2>/console (example: http://localhost:8000/console) and select Cron to run the Cron job to send emails.  Reminder - The email account used in step 2 must be configured to allow access for less secure apps.  To configure this,  log in to your email account, then, go to https://www.google.com/settings/security/lesssecureapps.
  
 ##Game Description:
 Tic-tac-toe is a e player game, X and O, who take turns marking the spaces in a 3×3 grid. 
@@ -21,6 +19,12 @@ Here is an example game won by the first player, X:
 _X_|___|_O_
 ___|_X_|_O_
    |   | X 
+
+## Score keeping: 
+- If a user wins a game, the user gets 1 point in number of wins.  Additionally,  number of moves on wins, winning percentage rate, and average game moves on winning games calculated at the end of the game for the player.  
+- If a user loses a game, the user gets 1 point in number of loses. 
+- If a game ends in a draw or a game is cancelled, scores remain the same for both players of the game.
+- All sores are stored in User model.  
 
 ##Files Included:
  - api.py: Contains endpoints and game playing logic.
